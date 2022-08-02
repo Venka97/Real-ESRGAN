@@ -27,16 +27,16 @@ poisson_scale_range2: [0.05, 2.5]
 gray_noise_prob2: 0.4
 jpeg_range2: [30, 95]
 
-gt_size: 256
-queue_size: 180
+gt_size: 128
+queue_size: 192
 
 # dataset and data loader settings
 datasets:
   train:
-    name: DF2K+OST
+    name: DF2K+Flicker
     type: RealESRGANDataset
-    dataroot_gt: datasets/DF2K
-    meta_info: datasets/DF2K/meta_info/meta_info_DF2Kmultiscale+OST_sub.txt
+    dataroot_gt: /home/mila/v/venkatesh.ramesh/scratch/downscaling/Real-ESRGAN/datasets/
+    meta_info: /home/mila/v/venkatesh.ramesh/scratch/downscaling/Real-ESRGAN/datasets/meta_info/dfk_hr.txt
     io_backend:
       type: disk
 
@@ -58,7 +58,7 @@ datasets:
 
     final_sinc_prob: 0.8
 
-    gt_size: 256
+    gt_size: 128
     use_hflip: True
     use_rot: False
 
@@ -90,7 +90,7 @@ network_g:
 
 # path
 path:
-  pretrain_network_g: experiments/pretrained_models/RealESRGAN_x4plus.pth
+  pretrain_network_g: experiments/pretrained_models/ESRGAN_SRx4_DF2KOST_official-ff704c30.pth
   param_key_g: params_ema
   strict_load_g: False
   resume_state: ~

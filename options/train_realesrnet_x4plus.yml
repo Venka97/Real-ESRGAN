@@ -3,7 +3,7 @@ name: train_RealESRNetx4plus_1000k_B12G4
 model_type: RealESRNetModel
 scale: 4
 num_gpu: auto  # auto: can infer from your visible devices automatically. official: 4 GPUs
-manual_seed: 0
+manual_seed: 4
 
 # ----------------- options for synthesizing training data in RealESRNetModel ----------------- #
 gt_usm: True  # USM the ground-truth
@@ -28,15 +28,15 @@ gray_noise_prob2: 0.4
 jpeg_range2: [30, 95]
 
 gt_size: 256
-queue_size: 180
+queue_size: 192
 
 # dataset and data loader settings
 datasets:
   train:
-    name: DF2K+OST
+    name: DF2K+OST+Flickr
     type: RealESRGANDataset
-    dataroot_gt: datasets/DF2K
-    meta_info: datasets/DF2K/meta_info/meta_info_DF2Kmultiscale+OST_sub.txt
+    dataroot_gt: /home/mila/v/venkatesh.ramesh/scratch/downscaling/Real-ESRGAN/datasets/ 
+    meta_info: /home/mila/v/venkatesh.ramesh/scratch/downscaling/Real-ESRGAN/datasets/meta_info/flickr_dfk_hronly.txt
     io_backend:
       type: disk
 
@@ -64,8 +64,8 @@ datasets:
 
     # data loader
     use_shuffle: true
-    num_worker_per_gpu: 5
-    batch_size_per_gpu: 12
+    num_worker_per_gpu: 4
+    batch_size_per_gpu: 24
     dataset_enlarge_ratio: 1
     prefetch_mode: ~
 
