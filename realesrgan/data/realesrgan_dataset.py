@@ -38,6 +38,7 @@ class RealESRGANDataset(data.Dataset):
         self.file_client = None
         self.io_backend_opt = opt['io_backend']
         self.gt_folder = opt['dataroot_gt']
+        self.slurm_path = os.environ['SLURM_TMPDIR']
 
         # file client (lmdb io backend)
         if self.io_backend_opt['type'] == 'lmdb':
@@ -52,7 +53,7 @@ class RealESRGANDataset(data.Dataset):
             # Each line in the meta_info describes the relative path to an image
             with open(self.opt['meta_info']) as fin:
                 paths = [line.strip().split(' ')[0] for line in fin]
-                self.paths = [os.path.join(self.gt_folder, v) for v in paths]
+                self.paths = [os.path.join(self.slurm_path, v) for v in paths]
 
         # blur settings for the first degradation
         self.blur_kernel_size = opt['blur_kernel_size']

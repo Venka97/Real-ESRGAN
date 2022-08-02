@@ -13,4 +13,7 @@
 module add anaconda/3
 conda activate downscaling
 
-python realesrgan/train.py -opt options/train_realesrnet_x2plus.yml  
+mkdir $SLURM_TMPDIR/datasets
+cp -r /home/mila/v/venkatesh.ramesh/scratch/downscaling/Real-ESRGAN/datasets/DIV2K_train_HR $SLURM_TMPDIR/datasets
+
+python realesrgan/train.py -opt options/train_realesrnet_x2plus.yml --debug 

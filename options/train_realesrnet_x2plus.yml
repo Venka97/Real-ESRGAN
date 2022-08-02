@@ -35,8 +35,8 @@ datasets:
   train:
     name: DF2K+Flicker
     type: RealESRGANDataset
-    dataroot_gt: /home/mila/v/venkatesh.ramesh/scratch/downscaling/Real-ESRGAN/datasets/
-    meta_info: /home/mila/v/venkatesh.ramesh/scratch/downscaling/Real-ESRGAN/datasets/meta_info/dfk_hr.txt
+    dataroot_gt: $SLURM_TMPDIR/datasets/  #/home/mila/v/venkatesh.ramesh/scratch/downscaling/Real-ESRGAN/datasets/#
+    meta_info: /home/mila/v/venkatesh.ramesh/scratch/downscaling/Real-ESRGAN/datasets/meta_info/dfk_hr_slurm.txt
     io_backend:
       type: disk
 
